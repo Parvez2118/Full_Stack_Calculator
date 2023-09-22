@@ -25,7 +25,7 @@ app.use(cors());
         if(userexists) { 
         return res.status(404).json({err:"email already exists"}); 
         }
-         const user=new User({email,password});///passing data to the schema and then send to nongodb
+         const user=new User({email,password});
          user.save().then(()=>{ 
         return res.status(200).json({Message:req.body});
          }).catch((err)=>{ return res.status(500).json({err:"failed to register"}); });
@@ -78,7 +78,7 @@ app.post("/login", async (req,res)=>
     });
 
     app.get('/ab',authenticate, async(req,res)=>{
-        // console.log("ggggggggggggggggggggggggggggggggggggggg"+req.rootUser);
+        
         
         res.send(req.rootUser);
     });
@@ -86,8 +86,7 @@ app.post("/login", async (req,res)=>
 
     app.post('/addcalculation', async (req, res) => {
         try {
-        //   const userId = req.user._id; // Get the user's ID (assuming you have user authentication in place)
-          const { input, calculatedResult, userid, calname } = req.body; // Extract calculation data from the request body
+            const { input, calculatedResult, userid, calname } = req.body; // Extract calculation data from the request body
       
           // Create a new calculation object
           
@@ -99,13 +98,7 @@ app.post("/login", async (req,res)=>
          if (!findeduser) {
             return res.status(404).json({ error: 'User not found' });
           }
-        //   const newCalculation = {
-        //     input,
-        //     calculatedResult,
-        //   };
-        //   if (!User.calculations) {
-        //     User.calculations = [];
-        //   }
+       
 
         console.log(input, calculatedResult)
           
@@ -113,17 +106,7 @@ app.post("/login", async (req,res)=>
 
          // Save the updated user document
           await findeduser.save();
-        //   console.log(findeduser.calculations);
-
-          // Push the new calculation object to the user's calculations array
-        //   const updatedUser = await User.findByIdAndUpdate(userid,
-        //     { $push: { calculations: newCalculation } },
-        //     { new: true }
-        //   );
-        //   console.log(updatedUser)
-        //   if (!updatedUser) {
-        //     return res.status(404).json({ error: 'User not found' });
-        //   }
+       
       
           return res.status(201).json({ message: 'Calculation added successfully', findeduser });
         } catch (error) {

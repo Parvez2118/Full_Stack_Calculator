@@ -3,8 +3,7 @@ import {useNavigate} from 'react-router-dom';
 
 function Login(){
     const navigate =useNavigate();
-    // const [email , Setemail]= useState('');
-    // const [password , SetPassword]= useState('');
+  
     const [userRegistration, SetRegistration]= useState({
                 email:"",
                 password:""
@@ -19,7 +18,6 @@ function Login(){
                 }
     const PostData= async (e) => {
         e.preventDefault();
-        // console.log(email);
         console.log(userRegistration);
         const {email, password} =userRegistration;
         const res = await fetch("/login", {
@@ -48,15 +46,7 @@ function Login(){
     }
     return(
         <>
-        {/* <form  method='POST'>
-            <label>Email</label>
-            <input type="email" autoComplete="off"  value={userRegistration.email} onChange={handelinput} required name="email"></input>
-            <br></br>
-            <label>Password</label>
-            <input type="password"  autoComplete="off" value={userRegistration.password} onChange={handelinput} required name="password"></input>
-            <br></br>
-            <button type="submit"  onClick={PostData}> Sign in </button>
-        </form> */}
+      
 
 
 <section class="vh-100 section" >

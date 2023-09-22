@@ -95,21 +95,6 @@ function Calculator() {
     setHistory([...history, { expression: input, result: calculatedResult }]);
     console.log(history);
     const userid = data2._id;
-    // const calculationData = {
-    //     express: input,
-    //     res: calculatedResult,
-    //     userid:data._id
-    //   };
-    // axios.post('/addcalculation', calculationData)
-    //     .then((response) => {
-    //         // Handle the response as needed
-    //         console.log('Calculation added successfully:', response.data);
-    //         // You can update your UI or do any other actions here
-    //     })
-    //     .catch((error) => {
-    //         console.error('Error adding calculation:', error);
-    //         // Handle the error
-    //     });
     const res = await fetch("/addcalculation", {
       method: "POST",
       headers: {
@@ -297,51 +282,3 @@ export default Calculator;
 
 
 
-{/* <div className="calculator">
-      <div className="display">
-        <input type="text" value={input} readOnly />
-        <div className="result">{result}</div>
-      </div>
-      <div className="buttons">
-        <div className="row">
-          <button onClick={() => handleInput('7')}>7</button>
-          <button onClick={() => handleInput('8')}>8</button>
-          <button onClick={() => handleInput('9')}>9</button>
-          <button onClick={() => handleInput('/')}>/</button>
-        </div>
-        <div className="row">
-          <button onClick={() => handleInput('4')}>4</button>
-          <button onClick={() => handleInput('5')}>5</button>
-          <button onClick={() => handleInput('6')}>6</button>
-          <button onClick={() => handleInput('*')}>*</button>
-        </div>
-        <div className="row">
-          <button onClick={() => handleInput('1')}>1</button>
-          <button onClick={() => handleInput('2')}>2</button>
-          <button onClick={() => handleInput('3')}>3</button>
-          <button onClick={() => handleInput('-')}>-</button>
-        </div>
-        <div className="row">
-          <button onClick={() => handleInput('0')}>0</button>
-          <button onClick={() => handleInput('.')}>.</button>
-          <button onClick={clearInput}>C</button>
-          <button onClick={() => handleInput('+')}>+</button>
-        </div>
-        <div className="row">
-          <button onClick={clearHistory}>Clear History</button>
-          <button onClick={calculateResult}>=</button>
-        </div>
-      </div>
-      <div className="history">
-        <h2>History</h2>
-        <ul>
-          {history.map((item, index) => (
-            <li key={index}>
-              <span>{item.expression} = {item.result}</span>
-              <button onClick={() => handleRecalculate(item.expression)}>Recalculate</button>
-              <button onClick={() => handleDelete(index)}>Delete</button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div> */}
