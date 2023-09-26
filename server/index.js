@@ -2,11 +2,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors=require('cors');
-const User=require('../server/modal/User');
+const User=require('./modal/User');
 const bcrypt=require('bcrypt');
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
-const authenticate= require('../server/controller/authenticate');
+const authenticate= require('./controller/authenticate');
 // Connect to MongoDB
 const DB='mongodb+srv://redskull:redskull2118@cluster0.ti3awfp.mongodb.net/Calculator?retryWrites=true&w=majority'; mongoose.connect(DB,{ useNewUrlParser:true, useUnifiedTopology:true }).then(()=>{ console.log(`Connected to DB`); }).catch((err)=>{ console.log(err); });
 
@@ -28,6 +28,9 @@ app.use(cors(
          return res.status(400).json({error:"Please fill field"});
          }
          User.findOne({email:email}).then((userexists)=>{ 
+          // console.log(userexists);
+          // console.log("console.log(userexists);console.log(userexists);console.log(userexists);console.log(userexists);");
+          // console.log(userexists);
         if(userexists) { 
         return res.status(404).json({err:"email already exists"}); 
         }
